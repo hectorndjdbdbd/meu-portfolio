@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site - Curiosidades & APIs</title>
+    <style>
+        :root {
+            --bg-body: #121212;
+            --bg-cartao: #1e1e1e;
+            --texto-principal: #ffffff;
+            --texto-secundario: #b0b0b0;
+            --cor-link: #bb86fc;
+            --cor-hover: #03dac6;
+            --cor-botao: #bb86fc;
+            --texto-botao: #000000;
+        }
+
+        body.tema-claro {
+            --bg-body: #f4f4f9;
+            --bg-cartao: #ffffff;
+            --texto-principal: #222222;
+            --texto-secundario: #555555;
+            --cor-link: #6200ee;
+            --cor-hover: #018786;
+            --cor-botao: #6200ee;
+            --texto-botao: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--texto-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cartao {
+            background-color: var(--bg-cartao);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 550px;
+            width: 90%;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav { margin-bottom: 20px; }
+
+        nav a {
+            color: var(--cor-link);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 4px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--cor-hover); }
+
+        .caixa-conselho {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: var(--cor-hover);
+        }
+
+        .btn-gerar {
+            background-color: var(--cor-botao);
+            color: var(--texto-botao);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-gerar:hover {
+            background-color: var(--cor-hover);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+        <nav>
+            <a href="index.html">Início</a> |
+            <a href="projetos.html">Projetos</a> |
+            <a href="sobre.html">Sobre</a> |
+            <a href="contato.html">Contato</a> |
+            <a href="galeria.html">Galeria</a> |
+            <a href="curiosidades.html">Curiosidades</a>
+        </nav>
+
+        <h1>Gerador de Conselhos</h1>
+        <p>Esta página procura dados ao vivo de uma API externa usando JavaScript!</p>
+
+        <div class="caixa-conselho" id="textoConselho">A carregar conselho...</div>
+
+        <button class="btn-gerar" onclick="obterConselho()">Gerar Novo Conselho 🎲</button>
+    </div>
+
+    <script>
+        const temaSalvo = localStorage.getItem('tema');
+        if (temaSalvo === 'claro') document.body.classList.add('tema-claro');
+
+        function obterConselho() {
+            const caixa = document.getElementById('textoConselho');
+            caixa.textContent = "A procurar conselho...";
+
+            fetch('https://api.adviceslip.com/advice')
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    caixa.textContent = `"${dados.slip.advice}"`;
+                })
+                .catch(erro => {
+                    caixa.textContent = "Não foi possível carregar o conselho no momento.";
+                    console.error('Erro na requisição:', erro);
+                });
+        }
+
+        obterConselho();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio - Início</title>
+    <style>
+        /* Variáveis de cores para o Tema Escuro (Padrão) */
+        :root {
+            --bg-body: #121212;
+            --bg-cartao: #1e1e1e;
+            --texto-principal: #ffffff;
+            --texto-secundario: #b0b0b0;
+            --cor-link: #bb86fc;
+            --cor-hover: #03dac6;
+            --cor-botao: #bb86fc;
+            --texto-botao: #000000;
+        }
+
+        /* Variáveis de cores para o Tema Claro */
+        body.tema-claro {
+            --bg-body: #f4f4f9;
+            --bg-cartao: #ffffff;
+            --texto-principal: #222222;
+            --texto-secundario: #555555;
+            --cor-link: #6200ee;
+            --cor-hover: #018786;
+            --cor-botao: #6200ee;
+            --texto-botao: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--texto-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cartao {
+            background-color: var(--bg-cartao);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: var(--cor-link);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--cor-hover);
+        }
+
+        .btn-tema {
+            background-color: var(--bg-body);
+            color: var(--texto-principal);
+            border: 1px solid var(--cor-link);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-tema:hover {
+            background-color: var(--cor-link);
+            color: var(--texto-botao);
+        }
+
+        .saudacao {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--cor-hover);
+            margin: 10px 0 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        p {
+            color: var(--texto-secundario);
+        }
+
+        .btn-acao {
+            background-color: var(--cor-botao);
+            color: var(--texto-botao);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-acao:hover {
+            background-color: var(--cor-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+        <!-- Menu de Navegação com Botão de Tema -->
+<nav>
+            <a href="index.html">Início</a> |
+            <a href="projetos.html">Projetos</a> |
+            <a href="sobre.html">Sobre</a> |
+            <a href="contato.html">Contato</a> |
+            <a href="galeria.html">Galeria</a> |
+            <a href="curiosidades.html">Curiosidades</a>
+            <button class="btn-tema" id="btnTema" onclick="alternarTema()">☀️ Claro</button>
+        </nav>        <h1>Meu Portfólio</h1>
+        
+        <!-- Elemento da Saudação Dinâmica -->
+        <div class="saudacao" id="mensagemSaudacao"></div>
+
+        <h2>Sobre Mim</h2>
+        <p>Estou aprendendo a criar páginas web com HTML, CSS e JavaScript!</p>
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop" alt="Espaço de trabalho de programação">
+
+        <p><a href="https://www.google.com" target="_blank" style="color: var(--cor-link);">Clique aqui para ir ao Google</a></p>
+
+        <button class="btn-acao" onclick="alert('Bem-vindo ao meu site!')">Ver Mais Informações</button>
+    </div>
+
+    <script>
+        // 1. Lógica do Alternador de Tema
+        const temaSalvo = localStorage.getItem('tema');
+        const btnTema = document.getElementById('btnTema');
+
+        if (temaSalvo === 'claro') {
+            document.body.classList.add('tema-claro');
+            btnTema.textContent = '🌙 Escuro';
+        }
+
+        function alternarTema() {
+            document.body.classList.toggle('tema-claro');
+            
+            if (document.body.classList.contains('tema-claro')) {
+                btnTema.textContent = '🌙 Escuro';
+                localStorage.setItem('tema', 'claro');
+            } else {
+                btnTema.textContent = '☀️ Claro';
+                localStorage.setItem('tema', 'escuro');
+            }
+        }
+
+        // 2. Lógica da Saudação Dinâmica por Horário
+        function atualizarSaudacao() {
+            const agora = new Date();
+            const hora = agora.getHours();
+            const elementoSaudacao = document.getElementById('mensagemSaudacao');
+            
+            let mensagem = "";
+
+            if (hora >= 5 && hora < 12) {
+                mensagem = "🌅 Bom dia! Seja bem-vindo ao meu site.";
+            } else if (hora >= 12 && hora < 18) {
+                mensagem = "☀️ Boa tarde! Seja bem-vindo ao meu site.";
+            } else {
+                mensagem = "🌙 Boa noite! Seja bem-vindo ao meu site.";
+            }
+
+            elementoSaudacao.textContent = mensagem;
+        }
+
+        // Executa a função assim que a página carrega
+        atualizarSaudacao();
+    </script>
+
+</body>
+</html>

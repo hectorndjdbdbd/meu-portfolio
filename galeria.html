@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site - Galeria de Fotos</title>
+    <style>
+        /* Variáveis de cores (Tema Escuro / Claro) */
+        :root {
+            --bg-body: #121212;
+            --bg-cartao: #1e1e1e;
+            --texto-principal: #ffffff;
+            --texto-secundario: #b0b0b0;
+            --cor-link: #bb86fc;
+            --cor-hover: #03dac6;
+        }
+
+        body.tema-claro {
+            --bg-body: #f4f4f9;
+            --bg-cartao: #ffffff;
+            --texto-principal: #222222;
+            --texto-secundario: #555555;
+            --cor-link: #6200ee;
+            --cor-hover: #018786;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--texto-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cartao {
+            background-color: var(--bg-cartao);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: var(--cor-link);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--cor-hover);
+        }
+
+        p {
+            color: var(--texto-secundario);
+        }
+
+        /* Grelha de fotos da galeria */
+        .grelha-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .grelha-galeria img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .grelha-galeria img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(3, 218, 198, 0.4);
+        }
+
+        /* Modal (Janela de Destaque da Imagem) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-conteudo {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fechar-modal:hover {
+            color: #03dac6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+        <!-- Menu de Navegação -->
+
+<nav>
+            <a href="index.html">Início</a> |
+            <a href="projetos.html">Projetos</a> |
+            <a href="sobre.html">Sobre</a> |
+            <a href="contato.html">Contato</a> |
+            <a href="galeria.html">Galeria</a> |
+            <a href="curiosidades.html">Curiosidades</a>
+        </nav>
+<h1>Galeria Interativa</h1>
+        <p>Clique em qualquer imagem para ver em tamanho expandido!</p>
+
+        <!-- Fotos da Galeria -->
+        <div class="grelha-galeria">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500" alt="Portátil com código" onclick="abrirModal(this.src)">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500" alt="Código Matrix verde" onclick="abrirModal(this.src)">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500" alt="Ecrã de desenvolvimento" onclick="abrirModal(this.src)">
+        </div>
+    </div>
+
+    <!-- Estrutura do Modal -->
+    <div id="meuModal" class="modal" onclick="fecharModal()">
+        <span class="fechar-modal">&times;</span>
+        <img id="imgModal" class="modal-conteudo">
+    </div>
+
+    <script>
+        // Manter o Tema escolhido no index.html
+        const temaSalvo = localStorage.getItem('tema');
+        if (temaSalvo === 'claro') {
+            document.body.classList.add('tema-claro');
+        }
+
+        // Funções da Galeria (Modal)
+        function abrirModal(urlImagem) {
+            const modal = document.getElementById('meuModal');
+            const imgModal = document.getElementById('imgModal');
+            modal.style.display = 'flex';
+            imgModal.src = urlImagem;
+        }
+
+        function fecharModal() {
+            document.getElementById('meuModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos</title>
+    <style>
+        :root {
+            --bg-body: #121212;
+            --bg-cartao: #1e1e1e;
+            --texto-principal: #ffffff;
+            --texto-secundario: #b0b0b0;
+            --cor-link: #bb86fc;
+            --cor-hover: #03dac6;
+        }
+
+        body.tema-claro {
+            --bg-body: #f4f4f9;
+            --bg-cartao: #ffffff;
+            --texto-principal: #222222;
+            --texto-secundario: #555555;
+            --cor-link: #6200ee;
+            --cor-hover: #018786;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--texto-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Animação Fade-In no Cartão */
+        .cartao {
+            background-color: var(--bg-cartao);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transition: background-color 0.3s;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav { margin-bottom: 20px; }
+
+        nav a {
+            color: var(--cor-link);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--cor-hover); }
+
+        .lista-projetos {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .item-projeto {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-like {
+            background: transparent;
+            border: 1px solid var(--cor-link);
+            color: var(--texto-principal);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-like:hover {
+            background-color: var(--cor-link);
+            color: #000;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+<nav>
+            <a href="index.html">Início</a> |
+            <a href="projetos.html">Projetos</a> |
+            <a href="sobre.html">Sobre</a> |
+            <a href="contato.html">Contato</a> |
+            <a href="galeria.html">Galeria</a> |
+            <a href="curiosidades.html">Curiosidades</a>
+        </nav>        <h1>Meus Projetos</h1>
+        <p>Projetos desenvolvidos com contadores de apoio:</p>
+
+        <ul class="lista-projetos">
+            <li class="item-projeto">
+                <span>💻 Meu Primeiro Site</span>
+                <button class="btn-like" onclick="darLike('proj1')">❤️ <span id="like-proj1">0</span></button>
+            </li>
+            <li class="item-projeto">
+                <span>🚀 Projeto em JavaScript</span>
+                <button class="btn-like" onclick="darLike('proj2')">❤️ <span id="like-proj2">0</span></button>
+            </li>
+            <li class="item-projeto">
+                <span>📱 Futuro Aplicativo Web</span>
+                <button class="btn-like" onclick="darLike('proj3')">❤️ <span id="like-proj3">0</span></button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const temaSalvo = localStorage.getItem('tema');
+        if (temaSalvo === 'claro') document.body.classList.add('tema-claro');
+
+        // Carregar curtidas salvas
+        const projetos = ['proj1', 'proj2', 'proj3'];
+        projetos.forEach(id => {
+            const likes = localStorage.getItem('likes_' + id) || 0;
+            document.getElementById('like-' + id).textContent = likes;
+        });
+
+        function darLike(id) {
+            let likes = parseInt(localStorage.getItem('likes_' + id) || 0) + 1;
+            localStorage.setItem('likes_' + id, likes);
+            document.getElementById('like-' + id).textContent = likes;
+        }
+    </script>
+
+</body>
+</html>
