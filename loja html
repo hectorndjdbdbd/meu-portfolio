@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Digital - Moda & Estilo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 20px;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-top: 8px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .categoria-titulo {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #111;
+            margin: 25px 0 15px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #111;
+        }
+
+        .card-produto {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid #eee;
+        }
+
+        .tag-categoria {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #d4af37;
+            text-transform: uppercase;
+        }
+
+        .produto-info h3 {
+            font-size: 1.1rem;
+            color: #111;
+        }
+
+        .produto-info p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        .produto-detalhes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #eee;
+        }
+
+        .preco {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .btn-pedir {
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-pedir:hover {
+            background-color: #1eb954;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 30px;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>✨ Loja de Roupas & Estilo</h1>
+        <p>Coleção Exclusiva | Peça pelo WhatsApp</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="categoria-titulo">🛍️ Destaques da Semana</h2>
+
+        <div class="card-produto">
+            <span class="tag-categoria">Feminino</span>
+            <div class="produto-info">
+                <h3>Vestido Midi Elegance</h3>
+                <p>Tecido leve e confortável com ótimo caimento. Tamanhos: P, M e G.</p>
+            </div>
+            <div class="produto-detalhes">
+                <span class="preco">R$ 119,90</span>
+                <a href="https://wa.me/559984171468?text=Olá!%20Gostaria%20de%20saber%20se%20tem%20disponível%20o%20Vestido%20Midi%20Elegance." target="_blank" class="btn-pedir">Ver no WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <span class="tag-categoria">Feminino</span>
+            <div class="produto-info">
+                <h3>Blusa Social Alfaiataria</h3>
+                <p>Corte moderno para o dia a dia. Cores: Branca, Off-White e Preta.</p>
+            </div>
+            <div class="produto-detalhes">
+                <span class="preco">R$ 79,90</span>
+                <a href="https://wa.me/559984171468?text=Olá!%20Gostaria%20de%20saber%20se%20tem%20disponível%20a%20Blusa%20Social%20Alfaiataria." target="_blank" class="btn-pedir">Ver no WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <span class="tag-categoria">Masculino</span>
+            <div class="produto-info">
+                <h3>Camisa Polo Cotton Premium</h3>
+                <p>100% algodão penteado. Cores: Azul Marinho, Cinza e Preto.</p>
+            </div>
+            <div class="produto-detalhes">
+                <span class="preco">R$ 89,90</span>
+                <a href="https://wa.me/559984171468?text=Olá!%20Gostaria%20de%20saber%20se%20tem%20disponível%20a%20Camisa%20Polo%20Cotton." target="_blank" class="btn-pedir">Ver no WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <span class="tag-categoria">Masculino</span>
+            <div class="produto-info">
+                <h3>Calça Jeans Slim Fit</h3>
+                <p>Jeans com elastano de alta flexibilidade. Tamanhos: 38 ao 46.</p>
+            </div>
+            <div class="produto-detalhes">
+                <span class="preco">R$ 139,90</span>
+                <a href="
