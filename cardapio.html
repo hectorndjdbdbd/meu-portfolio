@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital - Demonstração</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding-bottom: 40px;
+        }
+        header {
+            background-color: #ff4757;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        h2.categoria-titulo {
+            font-size: 18px;
+            color: #ff4757;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px solid #ff4757;
+            padding-bottom: 5px;
+        }
+        .card-produto {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .produto-info h3 {
+            font-size: 16px;
+            color: #2f3542;
+        }
+        .produto-info p {
+            font-size: 13px;
+            color: #57606f;
+            margin-top: 4px;
+        }
+        .produto-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .preco {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2ed573;
+        }
+        .btn-pedir {
+            background-color: #2ed573;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn-pedir:hover {
+            background-color: #26af5f;
+        }
+        footer.aviso-demo {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #a4b0be;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍔 Sabor Central</h1>
+        <p>O melhor lanche da cidade direto no seu WhatsApp!</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="categoria-titulo">🔥 Mais Vendidos</h2>
+
+        <!-- Produto 1 -->
+        <div class="card-produto">
+            <div class="produto-info">
+                <h3>X-Burguer Especial</h3>
+                <p>Pão brioche, hambúrguer artesanal 160g, queijo cheddar derretido e maionese da casa.</p>
+            </div>
+            <div class="produto-footer">
+                <span class="preco">R$ 28,00</span>
+                <a href="https://wa.me/5514999999999?text=Olá,%20gostaria%20de%20pedir%20o%20X-Burguer%20Especial" target="_blank" class="btn-pedir">Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="card-produto">
+            <div class="produto-info">
+                <h3>X-Bacon Crocante</h3>
+                <p>Pão tradicional, hambúrguer 160g, muito bacon crocante, alface, tomate e queijo prato.</p>
+            </div>
+            <div class="produto-footer">
+                <span class="preco">R$ 32,00</span>
+                <a href="https://wa.me/5514999999999?text=Olá,%20gostaria%20de%20pedir%20o%20X-Bacon%20Crocante" target="_blank" class="btn-pedir">Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+        <h2 class="categoria-titulo">🥤 Bebidas</h2>
+
+        <!-- Produto 3 -->
+        <div class="card-produto">
+            <div class="produto-info">
+                <h3>Coca-Cola Lata 350ml</h3>
+                <p>Gelada na medida certa.</p>
+            </div>
+            <div class="produto-footer">
+                <span class="preco">R$ 6,00</span>
+                <a href="https://wa.me/5514999999999?text=Olá,%20gostaria%20de%20pedir%20uma%20Coca-Cola%20Lata" target="_blank" class="btn-pedir">Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="aviso-demo">
+        <p>Modelo de Demonstração - Desenvolvido por Hector Web Developer</p>
+    </footer>
+
+</body>
+</html>
