@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabor & Arte — Confeitaria Artesanal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fdf8f5;
+      color: #4a3e3d;
+      padding-bottom: 40px;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #ff85a2, #ffacb7);
+      text-align: center;
+      padding: 30px 15px 20px;
+      border-bottom: 3px solid #ff477e;
+      box-shadow: 0 4px 15px rgba(255, 133, 162, 0.2);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #fff0f3;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: #fff;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    /* FILTROS DE CATEGORIAS */
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 15px;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .btn-category {
+      background-color: #fff;
+      color: #ff477e;
+      border: 1px solid #ffcad4;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-category.active, .btn-category:hover {
+      background-color: #ff477e;
+      color: #fff;
+      border-color: #ff477e;
+    }
+
+    /* CONTAINER & GRID */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: #590d22;
+      margin: 20px 0 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background-color: #ff477e;
+      border-radius: 2px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+    }
+
+    /* CARD DE PRODUTO */
+    .card {
+      background-color: #fff;
+      border: 1px solid #ffeaee;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background-color: #fff0f3;
+    }
+
+    .card-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #590d22;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 0.75rem;
+      color: #7d6b6d;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+
+    .card-price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ff477e;
+      margin-bottom: 10px;
+    }
+
+    .btn-buy {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, #25d366, #128c7e);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      padding: 10px 0;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* RODAPÉ DA LOJA */
+    .store-info {
+      background-color: #fff;
+      border: 1px solid #ffeaee;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    .store-info h3 {
+      color: #590d22;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .store-info p {
+      font-size: 0.85rem;
+      color: #7d6b6d;
+      margin-bottom: 6px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-btn {
+      color: #ff477e;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border: 1px solid #ff477e;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="logo">SABOR <span>& ARTE</span> 🧁</div>
+    <div class="tagline">Doces & Bolos Feitos com Amor 💕</div>
+  </header>
+
+  <div class="container">
+    
+    <!-- CATEGORIAS -->
+    <div class="categories">
+      <button class="btn-category active">✨ Todos</button>
+      <button class="btn-category">🎂 Bolos de Festa</button>
+      <button class="btn-category">🍫 Doces & Brigadeiros</button>
+      <button class="btn-category">🍰 Fatias & Potes</button>
+      <button class="btn-category">☕ Kit Festa</button>
+    </div>
+
+    <div class="section-title">Mais Pedidos</div>
+
+    <!-- GRID DE PRODUTOS -->
+    <div class="products-grid">
+
+      <!-- PRODUTO 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" class="card-img" alt="Bolo Vulcão Ninho">
+        <div class="card-body">
+          <div class="card-title">Bolo Vulcão Ninho com Nutella</div>
+          <div class="card-desc">Massa fofinha de chocolate com cobertura abundante.</div>
+          <div class="card-price">R$ 65,00</div>
+          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20encomendar%20o%20Bolo%20Vulcão%20Ninho%20com%20Nutella" target="_blank" class="btn-buy">Pedir pelo Zap</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400" class="card-img" alt="Caixa Brigadeiros">
+        <div class="card-body">
+          <div class="card-title">Caixa Brigadeiros Gourmet (12 un)</div>
+          <div class="card-desc">Sabores: Ao Leite, Ninho, Pistache e Churros.</div>
+          <div class="card-price">R$ 38,00</div>
+          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20pedir%20a%20Caixa%20de%20Brigadeiros%20Gourmet" target="_blank" class="btn-buy">Pedir pelo Zap</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=400" class="card-img" alt="Bolo de Aniversário">
+        <div class="card-body">
+          <div class="card-title">Bolo Personalizado (1.5 kg)</div>
+          <div class="card-desc">Escolha a massa, o recheio e a decoração de topo.</div>
+          <div class="card-price">R$ 110,00</div>
+          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20orçamento%20para%20Bolo%20Personalizado" target="_blank" class="btn-buy">Pedir pelo Zap</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 4 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1559620192-032c4bc46ee8?w=400" class="card-img" alt="Bolo no Pote">
+        <div class="card-body">
+          <div class="card-title">Bolo no Pote Red Velvet</div>
+          <div class="card-desc">Massa aveludada com recheio cremoso de cream cheese.</div>
+          <div class="card-price">R$ 14,00</div>
+          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20pedir%20o%20Bolo%20no%20Pote%20Red%20Velvet" target="_blank" class="btn-buy">Pedir pelo Zap</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SOBRE A LOJA -->
+    <div class="store-info">
+      <h3>🍰 Sabor & Arte Confeitaria</h3>
+      <p>📍 Entregas em toda a região / Retirada no local</p>
+      <p>⏰ Terça a Domingo: 10h às 19h</p>
+      <div class="social-links">
+        <a href="#" class="social-btn">Instagram</a>
+        <a href="#" class="social-btn">WhatsApp Direct</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
